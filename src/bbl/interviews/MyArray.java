@@ -1,11 +1,12 @@
 package bbl.interviews;
 
+import java.util.HashMap;
+
 //all methods must have complexity O[1]
 public class MyArray<T>
 {
 // Data Structure
-	private T[] myArray;
-	private boolean allMark;
+	private HashMap<Integer,T> myArray;
 	private T valueForAll;
 	private int size;
 	
@@ -13,8 +14,7 @@ public class MyArray<T>
 	public void setAll(T value)
 	{
 		//all array's elements should be set with a given value
-		this.myArray =  (T[])new Object[size];
-		allMark=true;
+		this.myArray =  new HashMap<Integer,T>();
 		valueForAll=value;
 	}
 	public void set(int index, T value)
@@ -25,11 +25,7 @@ public class MyArray<T>
 		{
 	       throw new ArrayIndexOutOfBoundsException();
 	    }
-		if(allMark && value==valueForAll)
-		{
-	       myArray[index]=null; 
-	    }
-		else myArray[index]=value;
+		myArray.put(index, value);
 		 
 	}
 	public T get(int index)
@@ -40,17 +36,15 @@ public class MyArray<T>
 		{
 	       throw new ArrayIndexOutOfBoundsException();
 	    }
-		T res=valueForAll;
-		if(myArray[index]!=null || !allMark) res=myArray[index];
-		return res;
+		return myArray.getOrDefault(index, valueForAll);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public MyArray(int size) {
+	public MyArray(int size)
+	{
 		//creates the Array object for a given size
 		//with setting null's at each element
-		this.myArray =  (T[])new Object[size];
-		this.allMark=false;
+		this.myArray =  new HashMap<Integer,T>();
 		this.valueForAll=null;
 		this.size=size;
 
