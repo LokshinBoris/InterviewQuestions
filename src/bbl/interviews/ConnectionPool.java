@@ -23,7 +23,7 @@ public ConnectionPool(int size)
 }
 public Connection getConnection(Connection connection)
 {
-	return map.computeIfAbsent(connection.id(), a-> connection);
+	return map.computeIfAbsent(connection.id(), a-> new Connection(connection.id()));
 }
 
 public boolean isInPool(long id)
