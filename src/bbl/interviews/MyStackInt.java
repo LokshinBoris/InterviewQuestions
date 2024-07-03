@@ -20,7 +20,7 @@ public class MyStackInt {
 		{
 			//adds num into top of stack (last element)
 			myStack.push(num);
-			if(currentMax<num) 
+			if(currentMax<=num) 
 			{	
 				maximums.push(num);
 				currentMax=num;

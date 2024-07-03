@@ -35,6 +35,12 @@ class MyStackTest
 		assertEquals(15,myStack.getMaxElement());
 		assertEquals(15,myStack.pop());
 		assertEquals(10,myStack.getMaxElement());	
+		
+		myStack.push(100);
+		myStack.push(100);
+		myStack.pop();
+		assertEquals(100,myStack.getMaxElement());	
+
 	
 	}
 
