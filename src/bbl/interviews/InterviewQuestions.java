@@ -105,14 +105,9 @@ public static boolean isAnagram(String word, String anagram)
 		boolean notLetter=true;
 		int i=0;
 		while(i<anagramLength && notLetter)
-		{
+		{		
 			Character chr=anagram.charAt(i);
-			Long value=map.get(chr);
-			if(value!=null)	
-			{
-				if(value>1)	map.put(chr, --value);
-				else map.remove(chr);
-			}
+			if(map.get(chr)!=null) map.compute(chr, (k,v)-> v>1? v-1: null);
 			else notLetter=false;
 			i++;
 		}
